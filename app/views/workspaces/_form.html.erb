@@ -1,0 +1,10 @@
+<%= form_with(model: workspace, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :name, 'ワークスペース名：' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

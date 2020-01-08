@@ -1,0 +1,10 @@
+<%= form_with(model: [workspace,room], local: true, url: workspace_rooms_path) do |f| %>
+  <div class="field">
+    <%= f.label :name, 'チャンネル名：' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
