@@ -25,8 +25,22 @@ class WorkspacesController < ApplicationController
     end
   end
 
+  def search
+    @q = Workspace.ransack(params[:q])
+    @workspaces = @q.result(distinct: true)
+  end
+
+  def result
+    @q = Workspace.search(search_params)
+    @workspaces = @q.result(distinct: true)
+  end
+
   private
     def workspace_params
       params.require(:workspace).permit(:name)
+    end
+
+    def search_params
+      params.require(:q).permit(:name_cont)
     end
 end

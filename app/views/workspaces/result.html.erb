@@ -1,0 +1,6 @@
+<h3>検索結果</h3>
+<% @workspaces.each do |workspace| %>
+  <p><%= link_to "#{workspace.name}", new_workspace_user_path(workspace) %>に参加する</p>
+<% end %>
+
+<p><%= link_to "Top", workspaces_path %></p>
