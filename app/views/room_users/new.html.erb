@@ -1,0 +1,16 @@
+<h3>以下のチャンネルに参加します</h3>
+<h4>チャンネル名：<%= @room.name %></h4>
+
+<%= form_with(model: @room_user, local: true) do |form| %>
+  <div class="field">
+    <%= form.text_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :room_id, value: @room.id %>
+  </div>
+
+  <div class="field">
+    <%= form.submit "OK" %>
+  </div>
+<% end %>
