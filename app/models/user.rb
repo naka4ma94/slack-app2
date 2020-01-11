@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :workspaces, through: :workspace_users
   has_many :room_users
   has_many :room, through: :room_users
+  has_many :messages
 end

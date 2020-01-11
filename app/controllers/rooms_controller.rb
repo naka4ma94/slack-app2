@@ -1,11 +1,13 @@
 class RoomsController < ApplicationController
   before_action :join_require, only: [:show]
+  before_action :authenticate_user!
 
   def index
   end
 
   def show
     @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 
   def new
