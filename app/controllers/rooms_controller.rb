@@ -29,6 +29,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def test
+    
+  end
+
   private
     def room_params
       params.require(:room).permit(:name)
