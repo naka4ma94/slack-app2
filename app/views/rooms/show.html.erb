@@ -1,9 +1,29 @@
+<div class="container-flux">
+  <div class="row">
+    <div class="col-3 menus" style="background-color: #800080; color: #dcdcdc;">
+      <%= render @rooms %>
+    </div>
+    <div class="col-9 contents" id="room_id_<%= @room.id %>">
+      <h3><%= @room.name %>チャットスペース</h3>
+      <div id='messages' data-room_id="<%= @room.id %>">
+        <%= render @messages %>
+      </div>
 
-<h3><%= @room.name %>チャットスペース</h3>
-<div id='messages' data-room_id="<%= @room.id %>">
-  <%= render @messages %>
+      <%= label_tag :content, 'Say something:' %>
+      <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+    </div>
+  </div>
 </div>
 
-<%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
-
+<script>
+  $(document).ready(function () {
+    hsize = $(window).height();
+    $(".menus").css("height", hsize + "px");
+    $(".contents").css("height", hsize + "px");
+  });
+  $(window).resize(function () {
+    hsize = $(window).height();
+    $(".menus").css("height", hsize + "px");
+    $(".contents").css("height", hsize + "px");
+  });
+</script>

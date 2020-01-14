@@ -1,3 +1,5 @@
 <div class='message'>
-  <p><%= "#{message.user.name}: #{message.content}" %></p>
+  <% @messages.each do |message| %>
+    <p><%= "#{message.user.name}: #{message.content}" %></p>
+  <% end %>
 </div>
