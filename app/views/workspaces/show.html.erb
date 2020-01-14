@@ -22,9 +22,10 @@
       </div>
     </div>
     <div class="col-9 contents" style="height: 100%; overflow: auto;">
-      <div class="messages"></div>
+      <div id='messages' data-room_id="1"></div>
       <div class="message-input">
-        <div class="form-group ml-3" id="message-form">
+        <div class="form-group ml-3">
+          <%= text_area :content, nil, data: { behavior: 'room_speaker' }, class: "form-control", rows: 5 %>
         </div>
       </div>
     </div>
@@ -40,7 +41,6 @@
     hsize = $(window).height();
     $(".channel-sidebar").css("height", hsize + "px");
   });
-
 </script>
 
 <style>
@@ -70,7 +70,7 @@
     margin-top: 70px;
   }
 
-  .messages {
+  #messages {
     padding: 20px 0px 0px 50px;
     margin-bottom: 900px;
   }

@@ -1,5 +1,7 @@
-import consumer from "./consumer"
+import consumer from './consumer'
 
+// $(function() {}; で囲むことでレンダリング後に実行される
+// レンダリング前に実行されると $('#messages').data('room_id') が取得できない
 $(function () {
   const chatChannel = consumer.subscriptions.create({ channel: 'RoomChannel', room: $('#messages').data('room_id') }, {
     connected() {
