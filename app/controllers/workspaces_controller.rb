@@ -5,7 +5,7 @@ class WorkspacesController < ApplicationController
 
   def show
     @workspace = Workspace.find(params[:id])
-    @rooms = current_user.rooms && @workspace.rooms
+    @rooms = @workspace.rooms && current_user.rooms
   end
 
   def new

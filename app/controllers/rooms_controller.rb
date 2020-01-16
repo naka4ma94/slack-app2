@@ -3,6 +3,10 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @workspace = Workspace.find(params[:workspace_id])
+    @rooms = @workspace.rooms
+    @not_joined_rooms = @rooms - current_user.rooms
+    @joined_rooms = @rooms & current_user.rooms
   end
 
   def show
