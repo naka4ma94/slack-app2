@@ -1,1 +1,1 @@
-<li><%= link_to workspace.name, "/workspaces/#{workspace.id}/rooms/1" %></li>
+<li><%= link_to workspace.name, "/workspaces/#{workspace.id}/rooms/#{workspace.rooms.find_by(name: "general").id}" %></li>
