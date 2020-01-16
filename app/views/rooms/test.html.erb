@@ -1,46 +1,100 @@
-<h5>overflow: visible; を指定</h5>
-<p class="sample" style="overflow: visible;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
+<div class="contents">
+  <div class="navigation row">
+    <div class="workspace-name col-3">
+      <div class="name">
+        ワークスペースネーム
+      </div>
+    </div>
+    <div class="channel-name col-9">
+      <div class="name">
+        チャンネルネーム
+      </div>
+    </div>
+  </div>
+  <div class="main row">
+    <div class="sidevar col-3">
+      <div class="channel-names">
+        <% 30.times do |i| %>
+          <p class="channel">
+            <%= "# ROOM#{i}" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="mainvar col-9">
+      <div class="messages">
+        <% 50.times do |i| %>
+          <p class="message">
+            <%= "# message#{i}" %>
+          </p>
+        <% end %>
+        <div class="message-input">
+          <div class="input form-group">
+            <%= text_area :content, nil, data: { behavior: 'room_speaker' }, class: "form-control", style: "width: 100%", rows: 5 %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h5>overflow: hidden; を指定</h5>
-<p class="sample" style="overflow: hidden;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
+</div>
 
-<h5>overflow: scroll; を指定</h5>
-<p class="sample" style="overflow: scroll;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
-
-<h5>overflow: auto; を指定</h5>
-<p class="sample" style="overflow: auto;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
-
-<h5>overflow: no-display; を指定</h5>
-<p class="sample" style="overflow: no-display;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
-
-<h5>overflow: no-content; を指定</h5>
-<p class="sample" style="overflow: no-content;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
-
-<h5>overflow: visible scroll; を指定</h5>
-<p class="sample" style="overflow: visible scroll;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
-
-<h5>overflow: scroll visible; を指定</h5>
-<p class="sample" style="overflow: scroll visible;">
-かえるぴょこぴょこみぴょこぴょこ、あわせてぴょこぴょこむぴょこぴょこ。
-</p>
 
 <style>
-  p.sample {
-    width: 200px; height: 50px;
-    background-color: yellowgreen; 
+  .contents {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .navigation {
+    height: 8%;
+  }
+
+  .workspace-name {
+    background-color: #3F0E40;
+    text-align: center;
+    display: table;
+    height: 100%;
+    width: 100%;
+    color: rgb(207, 195, 207);
+  }
+
+  .channel-name {
+    text-align: center;
+    display: table;
+    height: 100%;
+    width: 100%;
+    border-bottom: thin solid #f5f5f5;
+  }
+
+  .name {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .main {
+    height: 100%;
+  }
+
+  .sidevar {
+    color: rgb(207, 195, 207);
+    background-color: #3F0E40;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 10%;
+  }
+
+  .mainvar {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 30%;
+  }
+
+  .message-input {
+    position: fixed;
+    padding: 5px;
+    width: 60%;
+    top: 75%;
   }
 </style>
