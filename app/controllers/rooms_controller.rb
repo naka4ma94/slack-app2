@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-  before_action :join_require, only: [:show]
   before_action :authenticate_user!
 
   def index
@@ -10,7 +9,9 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @workspace = Workspace.find(params[:workspace_id])
     @room = Room.find(params[:id])
+    @rooms = @workspace.rooms & current_user.rooms
     @messages = @room.messages
   end
 
@@ -27,7 +28,7 @@ class RoomsController < ApplicationController
     @room = @workspace.rooms.build(room_params)
     if @room.save
       RoomUser.create(user_id: current_user.id, room_id: @room.id)
-      redirect_to @workspace, notice: 'チャンネルを作成しました。'
+      redirect_to workspace_room_path(@workspace,@room)
     else
       render :new
     end
@@ -40,12 +41,5 @@ class RoomsController < ApplicationController
   private
     def room_params
       params.require(:room).permit(:name)
-    end
-
-    def join_require
-      room = Room.find(params[:id])
-      unless RoomUser.find_by(user_id: current_user.id, room_id: params[:id])
-        redirect_to new_room_user_path(room), notice: 'チャンネルにまだ参加していません。参加しますか？'
-      end
     end
 end

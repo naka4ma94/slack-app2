@@ -3,7 +3,7 @@ import consumer from './consumer'
 // $(function() {}; で囲むことでレンダリング後に実行される
 // レンダリング前に実行されると $('#messages').data('room_id') が取得できない
 $(function () {
-  const chatChannel = consumer.subscriptions.create({ channel: 'RoomChannel', room: $('#messages').data('room_id') }, {
+  const chatChannel = consumer.subscriptions.create({ channel: 'RoomChannel', room: $('.messages').data('room_id') }, {
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -13,7 +13,7 @@ $(function () {
     },
 
     received: function (data) {
-      return $('#messages').append(data['message']);
+      return $('.messages').append(data['message']);
     },
 
     speak: function (message) {
