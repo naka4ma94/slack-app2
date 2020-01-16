@@ -5,10 +5,11 @@ class RoomUsersController < ApplicationController
   end
 
   def create
-    @room = Room.find(params[:room_user][:room_id])
-    @room_user = @room.room_users.build(room_user_params)
-    if @room_user.save
-      redirect_to workspace_path(@room.workspace), notice: 'チャンネルに参加しました。'
+    room = Room.find(params[:room_user][:room_id])
+    workspace = room.workspace
+    room_user = room.room_users.build(room_user_params)
+    if room_user.save
+      redirect_to workspace_room_path(workspace,room)
     end
   end
 

@@ -19,6 +19,8 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.new(workspace_params)
     if @workspace.save
       WorkspaceUser.create(user_id: current_user.id, workspace_id: @workspace.id)
+      room = @workspace.rooms.create(name: "general")
+      RoomUser.create(room_id: room.id, user_id: current_user.id)
       redirect_to workspaces_path, notice: 'ワークスペースを作成しました。'
     else
       render :new
